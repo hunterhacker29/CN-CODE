@@ -1,0 +1,37 @@
+def stuffing(b):
+    a = len(b)  
+    i = 0
+    while i <= a - 5:  # Loop until index a - 5 to avoid out-of-bounds
+        if (b[i] == 1 and b[i + 1] == 1 and b[i + 2] == 1 and 
+            b[i + 3] == 1 and b[i + 4] == 1):
+            print("Five consecutive 1s found")
+            b.insert(i + 5, 0)
+            break
+        else:
+            i += 1  
+
+def unstuffing(b):
+    a = len(b)
+    i = 0
+    while i <= a - 6:  # Loop until index a - 6 to avoid out-of-bounds
+        if (b[i] == 1 and b[i + 1] == 1 and b[i + 2] == 1 and 
+            b[i + 3] == 1 and b[i + 4] == 1):
+            del b[i + 5]
+            b=-1
+            break
+        else:
+            i += 1  
+
+a = int(input("Enter length of bits: "))
+
+b = [0] * a
+
+for i in range(a):
+    b[i] = int(input(f"Enter bit {i + 1}: "))
+
+print("Sender: \n", b)
+stuffing(b)  
+print("After stuffing: \n", b)
+
+unstuffing(b)
+print("At receiver after destuffing:", b)
